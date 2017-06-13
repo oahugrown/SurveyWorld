@@ -34,3 +34,5 @@ sysinfo.txt
 *.unitypackage
 Unity/Library
 Unity/ProjectSettings
+Unity/Temp/UnityLockfile
+Unity/Temp
