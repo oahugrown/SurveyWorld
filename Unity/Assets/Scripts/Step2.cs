@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿// Step2.cs
+// Written by - Y. Yeung (y-squared.net)
+// June-2017
+
+
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 

@@ -1,19 +1,11 @@
-﻿using UnityEngine;
+﻿// SurveyWorld.cs
+// Written by - Y. Yeung (y-squared.net)
+// June-2017
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-// Written by - Yvy (y-squared.net)
-
-// [SETUP IN UNITY]
-
-
-// [TO MODIFY CURRENT STEPS]
-
-
-// [TO ADD MORE STEPS]
-
-
-// [TO REMOVE STEPS]
 
 public class SurveyWorld : MonoBehaviour
 {
@@ -29,7 +21,6 @@ public class SurveyWorld : MonoBehaviour
     
 
     // Do not mod - Modifying variables below will alter the way ToNextStep() operates
-    private int newID = 0;
     private int currentStep = 0;
 
 
@@ -37,7 +28,6 @@ public class SurveyWorld : MonoBehaviour
     // MONOBEHAVIOUR
     void Start()
     {
-        // 
 
         // Make sure everything is set up properly
         for (int i = 0; i < steps.Length; ++i)
@@ -54,35 +44,6 @@ public class SurveyWorld : MonoBehaviour
         UpdateGUIText();
     }
 
-
-    //-----------------------------------------------------------------------------------------------------------------
-    // OK TO MOD
-    private bool InputIsValid()
-    {
-        print("Checking Input");
-
-        return true;
-    }
-
-    private bool StartSurveyAudio()
-    {
-        print("Starting Video Survey");
-        return true;
-    }
-
-    private bool SendToSurvey()
-    {
-        print("Sending user to survey link");
-        return true;
-    }
-
-    private bool SendToGames()
-    {
-        print("Sending user to the game");
-        return true;
-    }
-
-
     //-----------------------------------------------------------------------------------------------------------------
     // ADD NEW STEPS
 
@@ -91,23 +52,6 @@ public class SurveyWorld : MonoBehaviour
     // DO NOT MOD
     public void ToNextStep()
     {
-        if (currentStep == 0)
-        {
-            if (!InputIsValid())
-            {
-                SendErrorMessage();
-                return;
-            }
-        }
-        else if (currentStep == 1)
-        {
-            if (!StartSurveyAudio())
-            {
-                SendErrorMessage();
-                return;
-            }
-        }
-
         // Error check
         if (currentStep >= (steps.Length - 1))
         {
@@ -123,8 +67,10 @@ public class SurveyWorld : MonoBehaviour
         currentStep++;
         steps[currentStep].SetActive(true);
 
-        UpdateGUIText();
+        // Initialize Step if override
+        steps[currentStep].GetComponent<UIStepBase>().StepStart();
 
+        UpdateGUIText();
     }
 
     // Activates the error message and displays the current step error messages listed in string[] errorTexts

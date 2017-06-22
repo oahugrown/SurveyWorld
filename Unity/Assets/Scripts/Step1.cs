@@ -1,6 +1,12 @@
-﻿using UnityEngine;
+﻿// Step1.cs
+// Written by - Y. Yeung (y-squared.net)
+// June-2017
+
+
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+
 
 public class Step1: UIStepBase
 {
@@ -8,8 +14,13 @@ public class Step1: UIStepBase
     public GameObject submitButton;
 
     private int input;
-    private int sizeOfID; 
+    private int sizeOfID;
 
+    void Start()
+    {
+        base.BaseStart();
+    }
+    
     public int GetInputID()
     {
         return input;
@@ -21,7 +32,6 @@ public class Step1: UIStepBase
         input = int.Parse(newInput);
 
         // Check if the characterLimit for the inputField is met
-        InputField inputField = this.GetComponent<InputField>();
         sizeOfID = 5;           // [Yvy] - TODO: Un-hard code this 
 
         if (newInput.Length == sizeOfID)
@@ -37,12 +47,15 @@ public class Step1: UIStepBase
     public void OnSubmit()
     {
         // Check if the user is allowed through
-
+        if (participantsManager.ValidatedParticipant(input))
+        {
             // The user is allowed to go through
             ProceedToNextStep();
             return;
+        }
 
         // The user isn't allowed to go through
-        //SendErrorStep();
+        SendErrorStep();
     }
+
 }
