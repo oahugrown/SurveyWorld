@@ -17,7 +17,6 @@ public class UIStepBase : MonoBehaviour
     {
         scriptObj = GameObject.Find("Script").GetComponent<SurveyWorld>();
         participantsManager = GameObject.FindWithTag("ParticipantsManager").GetComponent<ParticipantsManager>();
-        print(participantsManager);
     }
 
     protected void ProceedToNextStep()
