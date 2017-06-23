@@ -98,10 +98,23 @@ public class ParticipantsManager : MonoBehaviour
         participants.Add(02156, new Participant(02156, false, fdg));
     }
 
+    void SetupDummyIDs()
+    {
+        participants.Add(77770, new Participant(77770, true, fdg));
+        participants.Add(77771, new Participant(77771, true, fdg));
+        participants.Add(77772, new Participant(77772, true, fdg));
+        participants.Add(77773, new Participant(77773, true, fdg));
+        participants.Add(77774, new Participant(77774, true, fdg));
+        participants.Add(77775, new Participant(77775, true, westPalmBeach));
+        participants.Add(77776, new Participant(77776, true, max));
+        participants.Add(77777, new Participant(77777, true, fdg));
+    }
+
     void Start()
     {
         participants = new Dictionary<int, Participant>();
         SetupParticipants();
+        SetupDummyIDs();
     }
 
     public bool ValidatedParticipant(int id)

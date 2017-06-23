@@ -23,7 +23,7 @@ public class Step2 : UIStepBase
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F10))
         {
             continueButton.GetComponent<Button>().interactable = true;
         }
