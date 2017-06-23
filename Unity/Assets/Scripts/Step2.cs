@@ -21,6 +21,14 @@ public class Step2 : UIStepBase
         StartCoroutine(StartTimer());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            continueButton.GetComponent<Button>().interactable = true;
+        }
+    }
+
     IEnumerator StartTimer()
     {
         AudioSource audioSource = audioObject.GetComponent<AudioSource>(); 

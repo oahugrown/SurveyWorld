@@ -29,7 +29,10 @@ public class Step1: UIStepBase
     public void OnInputChanged(string newInput)
     {
         // Update the new input
-        input = int.Parse(newInput);
+        if (int.TryParse(newInput, out input))
+        {
+            print(input);
+        }
 
         // Check if the characterLimit for the inputField is met
         sizeOfID = 5;           // [Yvy] - TODO: Un-hard code this 
